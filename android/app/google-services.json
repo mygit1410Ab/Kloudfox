@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "150132230881",
+    "project_id": "kloudfox-2fc72",
+    "storage_bucket": "kloudfox-2fc72.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:150132230881:android:ecc29630a3e1336bb545a0",
+        "android_client_info": {
+          "package_name": "com.kloudfox"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1N-PgWoEQS8h44yWVpxOqomGP66_jwQA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
