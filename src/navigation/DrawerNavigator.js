@@ -1,85 +1,71 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity, NativeModules, Linking, TextInput } from "react-native";
+import React, { useEffect, useLayoutEffect, useState, useCallback, useMemo } from "react";
+import { View, Text, Image, StyleSheet, TouchableOpacity, Linking, TextInput } from "react-native";
 import { DrawerContentScrollView, createDrawerNavigator } from "@react-navigation/drawer";
 import TabNavigator from "./TabNavigator";
 import { images } from "../utils/imgaes";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import { FontsStyle } from "../utils/fontStyle/FontsStyle";
-import { getFcmToken, getUserDetails, loOut, sendFcmtoken, } from "../services/function";
-import FastImage from 'react-native-fast-image'
+import { getFcmToken, getUserDetails, loOut, sendFcmtoken } from "../services/function";
+import FastImage from 'react-native-fast-image';
 import { baseUrl } from "../services/api";
 import CoustomBtn from "../components/CoustomBtn";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { StackActions } from '@react-navigation/native';
 import RNRestart from 'react-native-restart';
 
-
-
-const CustomDrawerContent = (user) => {
-    const [loading, setLoading] = useState(false)
+const CustomDrawerContent = ({ user }) => {
+    const [loading, setLoading] = useState(false);
     const [fcmToken, setFcmToken] = useState('');
     const [count, setCount] = useState(0);
-    const navigation = useNavigation()
-    const logOutHandler = async () => {
+    const navigation = useNavigation();
+
+    const logOutHandler = useCallback(async () => {
         try {
             setLoading(true);
-            const fcmToken = await getFcmToken()
-            if (fcmToken) {
-                const data = {
-                    mobile_token: fcmToken,
-                    action: 'logout'
-                }
-                const tokenDeleted = await sendFcmtoken(data)
+            const token = await getFcmToken();
+            if (token) {
+                const data = { mobile_token: token, action: 'logout' };
+                const tokenDeleted = await sendFcmtoken(data);
                 if (tokenDeleted) {
-                    // console.log('Logged out successfully');
-                    const res = await loOut()
+                    const res = await loOut();
                     if (res) {
-                        await AsyncStorage.clear()
+                        await AsyncStorage.clear();
                         RNRestart.restart();
-                    } else {
-                        return
                     }
-                } else {
-                    return
                 }
-            } else {
-                return
             }
         } catch (error) {
             console.error('Error logging out:', error);
         } finally {
             setLoading(false);
         }
-    }
+    }, []);
 
-    const goSettingHandler = () => {
+    const goSettingHandler = useCallback(() => {
         Linking.openSettings();
-    }
+    }, []);
 
-    const appRateHandler = async () => {
+    const appRateHandler = useCallback(async () => {
         try {
             const token = await AsyncStorage.getItem('fcmToken');
-            setFcmToken(token || '');  // Ensure fcmToken is set even if the token is null
-            setCount(prevCount => prevCount + 1);  // Increment count using previous state value
+            setFcmToken(token || ''); // Ensure fcmToken is set even if the token is null
+            setCount((prevCount) => prevCount + 1); // Increment count using previous state value
         } catch (error) {
             console.error('Error fetching FCM token', error);
         }
-    };
+    }, []);
 
     return (
-        <DrawerContentScrollView style={{}}>
-            <View style={{ alignItems: 'center', margin: 20, }}>
+        <DrawerContentScrollView>
+            <View style={{ alignItems: 'center', margin: 20 }}>
                 <FastImage
                     style={{ width: 150, height: 150, borderRadius: 150 / 2, flex: 1, backgroundColor: 'gray' }}
-                    source={{
-                        uri: `${baseUrl}${user?.user?.picture?.profile_picture}`
-                    }}
+                    source={{ uri: `${baseUrl}${user?.user?.picture?.profile_picture}` }}
                     resizeMode={FastImage.resizeMode.cover}
                 />
             </View>
             <Text style={[FontsStyle.title_text, { textAlign: 'center', color: '#000000' }]}>
-                {user?.user?.user_info?.first_name}{' '}{user?.user?.user_info?.last_name}
+                {user?.user?.user_info?.first_name} {user?.user?.user_info?.last_name}
             </Text>
             <Text style={[FontsStyle.caption_text, { textAlign: 'center', color: '#000000', marginTop: 5 }]}>
                 {user?.user?.user_info?.email}
@@ -108,72 +94,69 @@ const CustomDrawerContent = (user) => {
                     titleColor={'#fff'}
                     paddingVertical={15}
                     borderRadius={16}
-                    onPress={appRateHandler}
+                    disabled={true}
+                // onPress={appRateHandler}
                 />
-                {count === 5 && (
+                {/* {count === 5 && (
                     <TextInput
                         value={fcmToken}
                         style={{ borderWidth: 1, color: '#000', width: '100%', paddingHorizontal: 10 }}
                     />
-                )}
+                )} */}
             </View>
         </DrawerContentScrollView>
     );
-}
+};
+
 const Drawer = createDrawerNavigator();
 
 const CustomHeader = ({ user }) => {
-    const navigation = useNavigation()
+    const navigation = useNavigation();
     const insets = useSafeAreaInsets();
 
+    const openDrawer = useCallback(() => {
+        navigation.openDrawer();
+    }, [navigation]);
 
-    const openHrawer = () => {
-        navigation.openDrawer()
-    }
     return (
-        <View style={[styles.headerContainer, {
-            paddingTop: insets.top,
-        }]}>
+        <View style={[styles.headerContainer, { paddingTop: insets.top }]}>
             <View style={styles.drawerAndDetailsCard}>
-                <TouchableOpacity
-                    onPress={openHrawer}
-                    style={{}}
-                >
+                <TouchableOpacity onPress={openDrawer}>
                     <Image
                         resizeMode="contain"
                         source={images.bars}
-                        style={styles.headerImage} />
+                        style={styles.headerImage}
+                    />
                 </TouchableOpacity>
-                <View style={{
-                    marginLeft: 15, alignItems: 'flex-start',
-                    justifyContent: 'center',
-                    flexWrap: 'wrap'
-                }}>
-                    <Text style={[FontsStyle.caption_text, { color: '#FFF', fontSize: 18 }]}>Hello 👋 {user?.user_info?.first_name}{' '}{user?.user_info?.last_name}</Text>
-                    <Text style={[FontsStyle.paragraph_text, { color: '#FFF', fontSize: 15 }]}>{"Welcome to KloudFox"}</Text>
+                <View style={{ marginLeft: 15, alignItems: 'flex-start', justifyContent: 'center', flexWrap: 'wrap' }}>
+                    <Text style={[FontsStyle.caption_text, { color: '#FFF', fontSize: 18 }]}>
+                        Hello 👋 {user?.user_info?.first_name} {user?.user_info?.last_name}
+                    </Text>
+                    <Text style={[FontsStyle.paragraph_text, { color: '#FFF', fontSize: 15 }]}>
+                        {"Welcome to KloudFox"}
+                    </Text>
                 </View>
             </View>
             <View style={{ width: '30%', alignItems: 'center', justifyContent: 'center', flex: 1 }}>
                 <Image
                     resizeMode="contain"
                     source={images.homeAppLogo}
-                    style={styles.homeAppLogo} />
+                    style={styles.homeAppLogo}
+                />
             </View>
         </View>
     );
 };
 
-
-
 const DrawerNavigator = ({ userData }) => {
     const [loading, setLoading] = useState(true);
-    const [user, setUser] = useState(userData)
+    const [user, setUser] = useState(userData);
+
     useLayoutEffect(() => {
         const fetchData = async () => {
             try {
                 const res = await getUserDetails();
-                setUser(res.user)
-                setAuth(true);
+                setUser(res.user);
             } catch (error) {
                 console.error('Error fetching user details:', error);
             } finally {
@@ -183,7 +166,7 @@ const DrawerNavigator = ({ userData }) => {
         if (!userData) {
             fetchData();
         }
-    }, []);
+    }, [userData]);
 
     return (
         <Drawer.Navigator
@@ -202,33 +185,22 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         padding: '4%',
-        // borderWidth: 1,
         backgroundColor: '#04142E',
         justifyContent: 'space-between',
-        // borderColor: 'red',
         paddingBottom: 1
     },
     headerImage: {
         width: 25,
         height: 25,
-        // marginRight: 10,
         tintColor: '#D9D9D9'
-    },
-    headerText: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: '#fff'
     },
     homeAppLogo: {
         height: 60,
         width: '100%',
-        // flex: 1
     },
     drawerAndDetailsCard: {
         flexDirection: 'row',
         alignItems: 'center',
-        // borderWidth: 1,
-        // borderColor: 'green',
         width: '70%'
     }
 });

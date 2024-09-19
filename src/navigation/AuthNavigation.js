@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'react-native';
@@ -15,8 +15,12 @@ const Stack = createNativeStackNavigator();
 
 
 const AuthStack = () => {
+
+    const initialRouteName = useMemo(() => 'WelcomeScreen', []);
+
+
     return (
-        <Stack.Navigator initialRouteName='WelcomeScreen' screenOptions={{ headerShown: false }}>
+        <Stack.Navigator initialRouteName={initialRouteName} screenOptions={{ headerShown: false }}>
             <>
                 <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
                 <Stack.Screen name="AppIntroFirst" component={AppIntroFirst} />
@@ -30,18 +34,17 @@ const AuthStack = () => {
 
 const AuthNavigation = () => {
 
+    const navigationContainer = useMemo(() => (
+        <AuthStack />
+    ), []);
+
+
+
     return (
         <SafeAreaProvider>
-            <AuthStack />
+            {navigationContainer}
         </SafeAreaProvider>
     );
 }
 
 export default AuthNavigation;
-
-
-
-// <Stack.Navigator initialRouteName={initialRoute} screenOptions={{ headerShown: false }}>
-//                     <Stack.Screen name="Auth" component={AuthStack} />
-//                     <Stack.Screen name="Main" component={MainStack} />
-//                 </Stack.Navigator>

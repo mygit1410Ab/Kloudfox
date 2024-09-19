@@ -1,5 +1,5 @@
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View, ActivityIndicator, RefreshControl, BackHandler, TextInput } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { FontsStyle, windowWidth } from '../utils/fontStyle/FontsStyle';
 import { images } from '../utils/imgaes';
 import axios from 'axios';
@@ -25,27 +25,26 @@ const HomeScreen = () => {
     const [total, setTotal] = useState(true);
 
 
-    useEffect(() => {
-        const backAction = () => {
-            BackHandler.exitApp()
-            return true;
-        };
+    const backAction = useCallback(() => {
+        BackHandler.exitApp();
+        return true;
+    }, []); // Empty dependency array since there are no dependencies.
 
+    useEffect(() => {
         const backHandler = BackHandler.addEventListener(
             "hardwareBackPress",
             backAction
         );
 
         return () => backHandler.remove();
-    }, []);
-
-
+    }, [backAction]); // Add backAction as a dependency.
 
 
 
     // const [up, setUp] = useState([])
 
-    const fetchData = async (newPage = 1) => {
+
+    const fetchData = useCallback(async (newPage = 1) => {
         if (isLoading) return;
         setIsLoading(true);
 
@@ -61,8 +60,8 @@ const HomeScreen = () => {
                     status: 'all',
                 },
             });
-            // console.log(response.data.data)
-            newRes = response.data.data
+            // console.log("=======>res", response)
+            newRes = response.data.data;
             const responseData = response.data.data;
 
             if (!responseData) {
@@ -84,95 +83,77 @@ const HomeScreen = () => {
             setIsLoading(false);
             setIsRefreshing(false);
         }
-    };
+    }, [isLoading]);
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [page]);
 
-    const handleLoadMore = () => {
-        if (!isLoading && hasMoreData && newRes.length != 0) {
+    const handleLoadMore = useCallback(() => {
+        if (!isLoading && hasMoreData && newRes.length !== 0) {
             fetchData(page + 1);
         }
-    };
+    }, [isLoading, hasMoreData, newRes.length, page, fetchData]);
 
-    const handleRefresh = () => {
+    const handleRefresh = useCallback(() => {
         setIsRefreshing(true);
         fetchData(1);
-    };
+    }, [fetchData]);
 
-
-    const renderItem = ({ item }) => {
-        // console.log(item)
+    // console.log("data=======>", data)
+    const renderItem = useCallback(({ item }) => {
         return (
             <View style={styles.itemCard}>
                 <View style={styles.createCard}>
-                    <Text style={[FontsStyle.big_title_text, { fontWeight: '600', color: '#000' }]}>
+                    <Text style={[styles.bigTitleText, { color: '#000' }]}>
                         {item?.domain.length > 18 ? item.domain.substring(0, 18) + '...' : item.domain}
                     </Text>
-                    <Text style={[FontsStyle.small_text, { fontWeight: '600', color: '#6C757D', fontSize: 9 }]}>
+                    <Text style={[styles.smallText, { color: '#6C757D' }]}>
                         Created {moment(item?.created_at).format("MMM D, YYYY")}
                     </Text>
                 </View>
                 <View style={styles.detailsCard}>
                     <View style={styles.statusCard}>
-                        {
-                            item?.status === "PAUSED" &&
+                        {item?.status === "PAUSED" && (
                             <Image
-                                style={{ height: 30, width: 30, tintColor: 'orange', margin: 8 }}
+                                style={styles.statusImage}
                                 source={images.pause}
                             />
-                        }
-
-                        {
-                            item?.status === "UP" &&
-                            <Text style={{
-                                fontWeight: 'bold',
-                                color: item?.is_working === true ? "#22C55F" : '#BF232A',
-                                fontFamily: Platform.OS == 'ios' ? 'Poppins-Bold' : 'PoppinsBold',
-                                fontSize: 30
-                            }}>
-                                {"UP"}
+                        )}
+                        {item?.status === "UP" && (
+                            <Text style={[styles.statusText, { color: item?.is_working ? "#22C55F" : '#BF232A' }]}>
+                                UP
                             </Text>
-                        }
-                        {
-                            item?.status === "DOWN" &&
-                            <Text style={{
-                                fontWeight: 'bold',
-                                color: item?.is_working === true ? "#22C55F" : '#BF232A',
-                                fontFamily: Platform.OS == 'ios' ? 'Poppins-Bold' : 'PoppinsBold',
-                                fontSize: 30
-                            }}>
-                                {"DOWN"}
+                        )}
+                        {item?.status === "DOWN" && (
+                            <Text style={[styles.statusText, { color: item?.is_working ? "#22C55F" : '#BF232A' }]}>
+                                DOWN
                             </Text>
-                        }
-
-                        <Text style={[FontsStyle.small_text, { fontWeight: '600', color: '#6C757D', fontSize: 9, flexDirection: 'row' }]}>
+                        )}
+                        <Text style={styles.availabilityText}>
                             {"AVAILABILITY  "}
-                            <Text style={[FontsStyle.small_text, { fontWeight: '900', color: '#6C757D', fontSize: 12, flexDirection: 'row' }]}>
+                            <Text style={styles.availabilityValue}>
                                 {item?.availbility}
                             </Text>
-                            <Text style={[FontsStyle.small_text, { fontWeight: '600', color: '#6C757D', fontSize: 9, flexDirection: 'row' }]}>
-                                {"  DOWNTIME  "}
-                                <Text style={[FontsStyle.small_text, { fontWeight: '900', color: '#6C757D', fontSize: 12, flexDirection: 'row' }]}>
-                                    {item?.down_time}
-                                </Text>
+                            {"  DOWNTIME  "}
+                            <Text style={styles.downtimeValue}>
+                                {item?.down_time}
                             </Text>
                         </Text>
                     </View>
-                    <View style={{ flex: 1, }}>
+                    <View style={{ flex: 1 }}>
                         {item?.graph_stats && <Chart data={item?.graph_stats} />}
                     </View>
                 </View>
-                <View style={{ borderWidth: 0.5, marginTop: 10, borderColor: '#E5E5E5', }} />
+                <View style={styles.divider} />
                 <View style={styles.checkCard}>
-                    <Text style={[FontsStyle.small_text, { fontWeight: '600', color: '#0D6EFD', }]}>
+                    <Text style={styles.intervalText}>
                         {item?.interval_def}
                     </Text>
                 </View>
             </View>
-        )
-    }
+        );
+    }, []);
 
     const ListHeaderComponent = () => {
         const borderColor = '#4F1AF3'
@@ -349,7 +330,7 @@ const styles = StyleSheet.create({
     },
     detailsCard: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'center',
         // borderWidth: 1,
         paddingHorizontal: 10
@@ -366,5 +347,43 @@ const styles = StyleSheet.create({
         // borderWidth: 1,
         paddingHorizontal: 10,
         paddingTop: 5
-    }
+    },
+    bigTitleText: {
+        fontFamily: Platform.OS === 'ios' ? 'Poppins-Bold' : 'PoppinsBold',
+        fontSize: 18,
+        fontWeight: '600',
+    },
+    smallText: {
+        fontFamily: Platform.OS === 'ios' ? 'Poppins-Regular' : 'PoppinsRegular',
+        fontSize: 9,
+        fontWeight: '600',
+    },
+    statusImage: { height: 30, width: 30, tintColor: 'orange', margin: 8 },
+    statusText: {
+        fontWeight: 'bold',
+        fontSize: 30,
+        fontFamily: Platform.OS === 'ios' ? 'Poppins-Bold' : 'PoppinsBold',
+    },
+    availabilityText: {
+        fontWeight: '600',
+        color: '#6C757D',
+        fontSize: 9,
+        flexDirection: 'row',
+    },
+    availabilityValue: {
+        fontWeight: '900',
+        color: '#6C757D',
+        fontSize: 12,
+        flexDirection: 'row',
+    },
+    downtimeValue: {
+        fontWeight: '900',
+        color: '#6C757D',
+        fontSize: 12,
+        flexDirection: 'row',
+    },
+    divider: { borderWidth: 0.5, marginTop: 10, borderColor: '#E5E5E5' },
+    intervalText: { fontWeight: '600', color: '#0D6EFD' },
+    captionText: { color: '#8F8F8F', marginTop: 10 },
+    headerCountText: { fontWeight: '700', color: '#8F8F8F', marginBottom: 10 },
 })
