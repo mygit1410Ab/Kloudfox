@@ -60,15 +60,15 @@ const CustomDrawerContent = ({ user }) => {
             <View style={{ alignItems: 'center', margin: 20 }}>
                 <FastImage
                     style={{ width: 150, height: 150, borderRadius: 150 / 2, flex: 1, backgroundColor: 'gray' }}
-                    source={{ uri: `${baseUrl}${user?.user?.picture?.profile_picture}` }}
+                    source={{ uri: `${baseUrl}${user?.picture?.profile_picture}` }}
                     resizeMode={FastImage.resizeMode.cover}
                 />
             </View>
             <Text style={[FontsStyle.title_text, { textAlign: 'center', color: '#000000' }]}>
-                {user?.user?.user_info?.first_name} {user?.user?.user_info?.last_name}
+                {user?.user_info?.first_name} {user?.user_info?.last_name}
             </Text>
             <Text style={[FontsStyle.caption_text, { textAlign: 'center', color: '#000000', marginTop: 5 }]}>
-                {user?.user?.user_info?.email}
+                {user?.user_info?.email}
             </Text>
             <Text
                 onPress={goSettingHandler}
@@ -149,31 +149,12 @@ const CustomHeader = ({ user }) => {
 };
 
 const DrawerNavigator = ({ userData }) => {
-    const [loading, setLoading] = useState(true);
-    const [user, setUser] = useState(userData);
-
-    useLayoutEffect(() => {
-        const fetchData = async () => {
-            try {
-                const res = await getUserDetails();
-                setUser(res.user);
-            } catch (error) {
-                console.error('Error fetching user details:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        if (!userData) {
-            fetchData();
-        }
-    }, [userData]);
-
     return (
         <Drawer.Navigator
             screenOptions={{
-                header: () => <CustomHeader user={user} />
+                header: () => <CustomHeader user={userData} />
             }}
-            drawerContent={() => <CustomDrawerContent user={user} />}
+            drawerContent={() => <CustomDrawerContent user={userData} />}
         >
             <Drawer.Screen name="Home" component={TabNavigator} />
         </Drawer.Navigator>

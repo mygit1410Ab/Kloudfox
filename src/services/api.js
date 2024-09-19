@@ -11,4 +11,5 @@ export const endPoints = {
     upDateDevice: '/mobile/update_token',
     getSliderImages: '/mobile/get_slider_images',
     logOut: '/user/logout/',
+    metaData: "/monitor/metadata"
 }

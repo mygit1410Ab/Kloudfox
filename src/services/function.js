@@ -99,8 +99,9 @@ export const getUserDetails = async () => {
                 },
             }
         );
-        if (response.data) {
-            return response.data;
+        // console.log(response.data)
+        if (response?.data) {
+            return response?.data;
         }
     } catch (error) {
         console.error('Error fetching user details: ', error);

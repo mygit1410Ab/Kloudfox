@@ -10,9 +10,6 @@ import Chart from './Chart';
 
 
 const HomeScreen = () => {
-    let workingDomains = []
-    let notWorkingDomains = []
-    let newRes = []
     const ITEM_HEIGHT = 150;
     const [data, setData] = useState([]);
     const [page, setPage] = useState(1);
@@ -20,15 +17,18 @@ const HomeScreen = () => {
     const [isRefreshing, setIsRefreshing] = useState(false);
     const [hasMoreData, setHasMoreData] = useState(true);
     const [listData, setListData] = useState(null);
+    const [workingDomains, setWorkingDomains] = useState([]);
+    const [notWorkingDomains, setNotWorkingDomains] = useState([]);
+
     const [up, setUp] = useState(false);
     const [down, setDown] = useState(false);
     const [total, setTotal] = useState(true);
-
+    const [num, setNum] = useState(false);
 
     const backAction = useCallback(() => {
         BackHandler.exitApp();
         return true;
-    }, []); // Empty dependency array since there are no dependencies.
+    }, []);
 
     useEffect(() => {
         const backHandler = BackHandler.addEventListener(
@@ -37,14 +37,28 @@ const HomeScreen = () => {
         );
 
         return () => backHandler.remove();
-    }, [backAction]); // Add backAction as a dependency.
+    }, [backAction]);
 
+    useEffect(() => {
+        fetchListNumbers();
+    }, []);
 
+    const fetchListNumbers = async () => {
+        try {
+            const jwtToken = await AsyncStorage.getItem('access');
+            const response = await axios.get(`${baseUrl}${endPoints.metaData}`, {
+                headers: {
+                    Authorization: `Bearer ${jwtToken}`,
+                    'Content-Type': 'application/json',
+                }
+            });
+            setNum(response.data.data);
+        } catch (er) {
+            console.log(er);
+        }
+    };
 
-    // const [up, setUp] = useState([])
-
-
-    const fetchData = useCallback(async (newPage = 1) => {
+    const fetchList = useCallback(async (newPage = 1) => {
         if (isLoading) return;
         setIsLoading(true);
 
@@ -60,23 +74,30 @@ const HomeScreen = () => {
                     status: 'all',
                 },
             });
-            // console.log("=======>res", response)
-            newRes = response.data.data;
+
             const responseData = response.data.data;
 
-            if (!responseData) {
-                // console.error('Error: No data found in response.');
-                return;
-            }
-
-            if (newPage === 1) {
-                setData(responseData);
+            if (!responseData || responseData.length === 0) {
+                setHasMoreData(false);
             } else {
-                setData(prevData => [...prevData, ...responseData]);
-            }
+                if (newPage === 1) {
 
-            setHasMoreData(responseData.length > 0);
-            setPage(newPage);
+                    setData(responseData);
+                    setWorkingDomains(responseData.filter((el) => el.is_working === true));
+                    setNotWorkingDomains(responseData.filter((el) => el.is_working !== true));
+                } else {
+
+                    setData((prevData) => {
+                        const updatedData = [...prevData, ...responseData];
+
+                        setWorkingDomains(updatedData.filter((el) => el.is_working === true));
+                        setNotWorkingDomains(updatedData.filter((el) => el.is_working !== true));
+                        return updatedData;
+                    });
+                }
+                setPage(newPage);
+                setHasMoreData(true);
+            }
         } catch (error) {
             console.error('Error fetching data:', error);
         } finally {
@@ -85,22 +106,23 @@ const HomeScreen = () => {
         }
     }, [isLoading]);
 
-    useEffect(() => {
-        fetchData();
-    }, [page]);
-
     const handleLoadMore = useCallback(() => {
-        if (!isLoading && hasMoreData && newRes.length !== 0) {
-            fetchData(page + 1);
+        if (!isLoading && hasMoreData) {
+            fetchList(page + 1);
         }
-    }, [isLoading, hasMoreData, newRes.length, page, fetchData]);
+    }, [isLoading, hasMoreData, page, fetchList]);
 
     const handleRefresh = useCallback(() => {
         setIsRefreshing(true);
-        fetchData(1);
-    }, [fetchData]);
+        setHasMoreData(true);
+        fetchList(1);
+    }, [fetchList]);
 
-    // console.log("data=======>", data)
+    useEffect(() => {
+        fetchList(1);
+    }, []);
+
+
     const renderItem = useCallback(({ item }) => {
         return (
             <View style={styles.itemCard}>
@@ -167,7 +189,6 @@ const HomeScreen = () => {
             setTotal(false)
             setDown(false)
             setUp(true)
-
             setListData(workingDomains)
         }
         const onPressDown = () => {
@@ -187,7 +208,7 @@ const HomeScreen = () => {
                             Total
                         </Text>
                         <Text style={[FontsStyle.heading_2_text, { fontWeight: '700', color: '#8F8F8F', marginBottom: 10 }]}>
-                            {data.length}
+                            {num?.total_monitors}
                         </Text>
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -197,7 +218,7 @@ const HomeScreen = () => {
                             Up
                         </Text>
                         <Text style={[FontsStyle.heading_2_text, { fontWeight: '700', color: '#22C55F', marginBottom: 10 }]}>
-                            {workingDomains.length}
+                            {num?.up_monitors}
                         </Text>
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -207,7 +228,7 @@ const HomeScreen = () => {
                             Down
                         </Text>
                         <Text style={[FontsStyle.heading_2_text, { fontWeight: '700', color: '#BF232A', marginBottom: 10 }]}>
-                            {notWorkingDomains.length}
+                            {num?.down_monitors}
                         </Text>
                     </TouchableOpacity>
                 </View>
@@ -217,17 +238,6 @@ const HomeScreen = () => {
 
 
 
-    // console.log(data)
-    if (data.length !== 0) {
-        workingDomains = data.filter((el) => {
-            return el.is_working === true; // Return true or false based on condition
-        });
-        notWorkingDomains = data.filter((el) => {
-            return el.is_working !== true; // Return true or false based on condition
-        });
-        // console.log("workingDomains", workingDomains);
-        // setUp(workingDomains)
-    }
 
     return (
         <View style={styles.mainCard}>
@@ -240,12 +250,12 @@ const HomeScreen = () => {
                 ListHeaderComponent={() => <ListHeaderComponent item={{ data }} />}
                 ListFooterComponent={isLoading && <ActivityIndicator size="large" color="#04142E" />}
                 onEndReached={handleLoadMore}
-                scrollEventThrottle={16}  // lower value for more frequent updates
+                scrollEventThrottle={16}
                 initialNumToRender={10}
                 maxToRenderPerBatch={10}
                 windowSize={21}
                 onEndReachedThreshold={0.5}
-                removeClippedSubviews={true}  // unload items outside of view
+                removeClippedSubviews={true}
                 showsHorizontalScrollIndicator={false}
                 showsVerticalScrollIndicator={false}
                 getItemLayout={(data, index) => (
