@@ -1,6 +1,5 @@
 #import "AppDelegate.h"
 #import <React/RCTBundleURLProvider.h>
-#import "RNSplashScreen.h"
 #import <Firebase.h>
 #import <UserNotifications/UserNotifications.h> // Add this import
 #import <RNCPushNotificationIOS.h> // Add this import for React Native Push Notification

@@ -10,7 +10,6 @@
 		00E356F31AD99517003FC87E /* AwesomeProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* AwesomeProjectTests.m */; };
 		0472DCC22C034D3B877BFAC1 /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A63043BE17D4AEF92924825 /* Poppins-SemiBoldItalic.ttf */; };
 		05C85A9CF64F4DAA8E5917E1 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 659D19C0FECC4795BB63A95E /* Poppins-SemiBold.ttf */; };
-		079787D629D7D32339D1A38A /* Pods_AwesomeProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D89CF9600BBAB71DD7D985F /* Pods_AwesomeProject.framework */; };
 		0868D76D89BC45CAB84EE951 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DD98CECDC10494893DA97ED /* Poppins-Medium.ttf */; };
 		0CC58DFDD7CC45A78C084CCC /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 563BB46A39EC4753A3E4DD90 /* Poppins-ThinItalic.ttf */; };
 		12548D934CB8488FA96C011C /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0A59DCF3661401C97D03B43 /* Poppins-BoldItalic.ttf */; };
@@ -29,9 +28,10 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8C6D366CE1EE43689F918A60 /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63971FB0F7DD42C18E1CFC08 /* Poppins-ExtraBold.ttf */; };
 		8D52DB4D28E54494BB6FF1F1 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DF0394E37474626BD2265C9 /* Poppins-Black.ttf */; };
-		976D4F02DEB7E23040E5E7FB /* Pods_AwesomeProject_AwesomeProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E7BAEC1739C4FA3290D8F7 /* Pods_AwesomeProject_AwesomeProjectTests.framework */; };
+		A6733EDC43EB2166CCF92B69 /* Pods_AwesomeProject_AwesomeProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D4E7078E604FDFF695ABC09 /* Pods_AwesomeProject_AwesomeProjectTests.framework */; };
 		A9AAAE0EF80E4BD49199736B /* Poppins-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D77979179AF4E00BED6212C /* Poppins-LightItalic.ttf */; };
 		C303D2A300A3447599628E70 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0BAAB5A16B4D4DA7854B31C2 /* Poppins-Bold.ttf */; };
+		C54D210B6006C6DC4F978C5C /* Pods_AwesomeProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEF97E01D95C92E27ED09B72 /* Pods_AwesomeProject.framework */; };
 		CAEFAB98073742B495A57E62 /* Poppins-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A9A5E70BD1F4B9ABA61FCCA /* Poppins-BlackItalic.ttf */; };
 		DFF49F93A23845989A1B2700 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B8A77D82BBD4A558148BBE5 /* Poppins-Regular.ttf */; };
 /* End PBXBuildFile section */
@@ -63,8 +63,8 @@
 		1BB25CF8BF56A00EC1FED5C7 /* Pods-AwesomeProject-AwesomeProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeProject-AwesomeProjectTests.release.xcconfig"; path = "Target Support Files/Pods-AwesomeProject-AwesomeProjectTests/Pods-AwesomeProject-AwesomeProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		2A9A5E70BD1F4B9ABA61FCCA /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-BlackItalic.ttf"; path = "../src/assets/fonts/Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
 		483C27023A7BD69F861B8869 /* Pods-AwesomeProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeProject.debug.xcconfig"; path = "Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject.debug.xcconfig"; sourceTree = "<group>"; };
+		4D4E7078E604FDFF695ABC09 /* Pods_AwesomeProject_AwesomeProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AwesomeProject_AwesomeProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		563BB46A39EC4753A3E4DD90 /* Poppins-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ThinItalic.ttf"; path = "../src/assets/fonts/Poppins-ThinItalic.ttf"; sourceTree = "<group>"; };
-		5D89CF9600BBAB71DD7D985F /* Pods_AwesomeProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AwesomeProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF0394E37474626BD2265C9 /* Poppins-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Black.ttf"; path = "../src/assets/fonts/Poppins-Black.ttf"; sourceTree = "<group>"; };
 		63971FB0F7DD42C18E1CFC08 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraBold.ttf"; path = "../src/assets/fonts/Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
 		659D19C0FECC4795BB63A95E /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-SemiBold.ttf"; path = "../src/assets/fonts/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 		A3698CDEE996FEC6F9191771 /* Pods-AwesomeProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeProject.release.xcconfig"; path = "Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject.release.xcconfig"; sourceTree = "<group>"; };
 		A3B3ADA45B9ECA540BCD4CE0 /* Pods-AwesomeProject-AwesomeProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeProject-AwesomeProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-AwesomeProject-AwesomeProjectTests/Pods-AwesomeProject-AwesomeProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A512D89C2B5F43688CBF3145 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-MediumItalic.ttf"; path = "../src/assets/fonts/Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
-		D5E7BAEC1739C4FA3290D8F7 /* Pods_AwesomeProject_AwesomeProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AwesomeProject_AwesomeProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEF97E01D95C92E27ED09B72 /* Pods_AwesomeProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AwesomeProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAEE7ECF840E41D5BE399632 /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraLightItalic.ttf"; path = "../src/assets/fonts/Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		E338EC5822544782B14B7B50 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Italic.ttf"; path = "../src/assets/fonts/Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		E5773797779942BEBA4762DC /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraLight.ttf"; path = "../src/assets/fonts/Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				976D4F02DEB7E23040E5E7FB /* Pods_AwesomeProject_AwesomeProjectTests.framework in Frameworks */,
+				A6733EDC43EB2166CCF92B69 /* Pods_AwesomeProject_AwesomeProjectTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				079787D629D7D32339D1A38A /* Pods_AwesomeProject.framework in Frameworks */,
+				C54D210B6006C6DC4F978C5C /* Pods_AwesomeProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,8 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5D89CF9600BBAB71DD7D985F /* Pods_AwesomeProject.framework */,
-				D5E7BAEC1739C4FA3290D8F7 /* Pods_AwesomeProject_AwesomeProjectTests.framework */,
+				AEF97E01D95C92E27ED09B72 /* Pods_AwesomeProject.framework */,
+				4D4E7078E604FDFF695ABC09 /* Pods_AwesomeProject_AwesomeProjectTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -572,7 +572,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = AwesomeProject/AwesomeProject.entitlements;
-				CURRENT_PROJECT_VERSION = 1.0.4;
+				CURRENT_PROJECT_VERSION = 1.0.5;
 				DEVELOPMENT_TEAM = G479V3LX2B;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = AwesomeProject/Info.plist;
@@ -580,7 +580,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -602,14 +602,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = AwesomeProject/AwesomeProject.entitlements;
-				CURRENT_PROJECT_VERSION = 1.0.4;
+				CURRENT_PROJECT_VERSION = 1.0.5;
 				DEVELOPMENT_TEAM = G479V3LX2B;
 				INFOPLIST_FILE = AwesomeProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

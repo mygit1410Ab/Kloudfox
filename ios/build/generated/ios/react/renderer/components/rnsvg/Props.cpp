@@ -29,12 +29,9 @@ RNSVGSvgViewAndroidProps::RNSVGSvgViewAndroidProps(
     vbHeight(convertRawProp(context, rawProps, "vbHeight", sourceProps.vbHeight, {0.0})),
     align(convertRawProp(context, rawProps, "align", sourceProps.align, {})),
     meetOrSlice(convertRawProp(context, rawProps, "meetOrSlice", sourceProps.meetOrSlice, {0})),
-    tintColor(convertRawProp(context, rawProps, "tintColor", sourceProps.tintColor, {})),
     color(convertRawProp(context, rawProps, "color", sourceProps.color, {})),
     pointerEvents(convertRawProp(context, rawProps, "pointerEvents", sourceProps.pointerEvents, {})),
     hasTVPreferredFocus(convertRawProp(context, rawProps, "hasTVPreferredFocus", sourceProps.hasTVPreferredFocus, {false})),
-    borderTopEndRadius(convertRawProp(context, rawProps, "borderTopEndRadius", sourceProps.borderTopEndRadius, {0.0})),
-    borderBottomStartRadius(convertRawProp(context, rawProps, "borderBottomStartRadius", sourceProps.borderBottomStartRadius, {0.0})),
     borderBottomColor(convertRawProp(context, rawProps, "borderBottomColor", sourceProps.borderBottomColor, {})),
     nextFocusDown(convertRawProp(context, rawProps, "nextFocusDown", sourceProps.nextFocusDown, {0})),
     borderRightColor(convertRawProp(context, rawProps, "borderRightColor", sourceProps.borderRightColor, {})),
@@ -46,11 +43,9 @@ RNSVGSvgViewAndroidProps::RNSVGSvgViewAndroidProps(
     nextFocusUp(convertRawProp(context, rawProps, "nextFocusUp", sourceProps.nextFocusUp, {0})),
     accessible(convertRawProp(context, rawProps, "accessible", sourceProps.accessible, {false})),
     borderStartColor(convertRawProp(context, rawProps, "borderStartColor", sourceProps.borderStartColor, {})),
-    borderBottomEndRadius(convertRawProp(context, rawProps, "borderBottomEndRadius", sourceProps.borderBottomEndRadius, {0.0})),
     borderEndColor(convertRawProp(context, rawProps, "borderEndColor", sourceProps.borderEndColor, {})),
     focusable(convertRawProp(context, rawProps, "focusable", sourceProps.focusable, {false})),
     nativeBackgroundAndroid(convertRawProp(context, rawProps, "nativeBackgroundAndroid", sourceProps.nativeBackgroundAndroid, {})),
-    borderTopStartRadius(convertRawProp(context, rawProps, "borderTopStartRadius", sourceProps.borderTopStartRadius, {0.0})),
     nativeForegroundAndroid(convertRawProp(context, rawProps, "nativeForegroundAndroid", sourceProps.nativeForegroundAndroid, {})),
     backfaceVisibility(convertRawProp(context, rawProps, "backfaceVisibility", sourceProps.backfaceVisibility, {})),
     borderStyle(convertRawProp(context, rawProps, "borderStyle", sourceProps.borderStyle, {})),
@@ -58,18 +53,22 @@ RNSVGSvgViewAndroidProps::RNSVGSvgViewAndroidProps(
     hitSlop(convertRawProp(context, rawProps, "hitSlop", sourceProps.hitSlop, {})),
     borderTopColor(convertRawProp(context, rawProps, "borderTopColor", sourceProps.borderTopColor, {})),
     nextFocusLeft(convertRawProp(context, rawProps, "nextFocusLeft", sourceProps.nextFocusLeft, {0})),
-    borderTopRightRadius(convertRawProp(context, rawProps, "borderTopRightRadius", sourceProps.borderTopRightRadius, {0.0})),
-    borderBottomRightRadius(convertRawProp(context, rawProps, "borderBottomRightRadius", sourceProps.borderBottomRightRadius, {0.0})),
-    borderRadius(convertRawProp(context, rawProps, "borderRadius", sourceProps.borderRadius, {0.0})),
-    borderBottomLeftRadius(convertRawProp(context, rawProps, "borderBottomLeftRadius", sourceProps.borderBottomLeftRadius, {0.0})),
-    borderTopLeftRadius(convertRawProp(context, rawProps, "borderTopLeftRadius", sourceProps.borderTopLeftRadius, {0.0})),
     borderBlockColor(convertRawProp(context, rawProps, "borderBlockColor", sourceProps.borderBlockColor, {})),
     borderBlockEndColor(convertRawProp(context, rawProps, "borderBlockEndColor", sourceProps.borderBlockEndColor, {})),
     borderBlockStartColor(convertRawProp(context, rawProps, "borderBlockStartColor", sourceProps.borderBlockStartColor, {})),
-    borderEndEndRadius(convertRawProp(context, rawProps, "borderEndEndRadius", sourceProps.borderEndEndRadius, {0.0})),
-    borderEndStartRadius(convertRawProp(context, rawProps, "borderEndStartRadius", sourceProps.borderEndStartRadius, {0.0})),
-    borderStartEndRadius(convertRawProp(context, rawProps, "borderStartEndRadius", sourceProps.borderStartEndRadius, {0.0})),
-    borderStartStartRadius(convertRawProp(context, rawProps, "borderStartStartRadius", sourceProps.borderStartStartRadius, {0.0}))
+    borderRadius(convertRawProp(context, rawProps, "borderRadius", sourceProps.borderRadius, {})),
+    borderTopLeftRadius(convertRawProp(context, rawProps, "borderTopLeftRadius", sourceProps.borderTopLeftRadius, {})),
+    borderTopRightRadius(convertRawProp(context, rawProps, "borderTopRightRadius", sourceProps.borderTopRightRadius, {})),
+    borderBottomRightRadius(convertRawProp(context, rawProps, "borderBottomRightRadius", sourceProps.borderBottomRightRadius, {})),
+    borderBottomLeftRadius(convertRawProp(context, rawProps, "borderBottomLeftRadius", sourceProps.borderBottomLeftRadius, {})),
+    borderTopStartRadius(convertRawProp(context, rawProps, "borderTopStartRadius", sourceProps.borderTopStartRadius, {})),
+    borderTopEndRadius(convertRawProp(context, rawProps, "borderTopEndRadius", sourceProps.borderTopEndRadius, {})),
+    borderBottomStartRadius(convertRawProp(context, rawProps, "borderBottomStartRadius", sourceProps.borderBottomStartRadius, {})),
+    borderBottomEndRadius(convertRawProp(context, rawProps, "borderBottomEndRadius", sourceProps.borderBottomEndRadius, {})),
+    borderEndEndRadius(convertRawProp(context, rawProps, "borderEndEndRadius", sourceProps.borderEndEndRadius, {})),
+    borderEndStartRadius(convertRawProp(context, rawProps, "borderEndStartRadius", sourceProps.borderEndStartRadius, {})),
+    borderStartEndRadius(convertRawProp(context, rawProps, "borderStartEndRadius", sourceProps.borderStartEndRadius, {})),
+    borderStartStartRadius(convertRawProp(context, rawProps, "borderStartStartRadius", sourceProps.borderStartStartRadius, {}))
       {}
 RNSVGCircleProps::RNSVGCircleProps(
     const PropsParserContext &context,
@@ -88,6 +87,7 @@ RNSVGCircleProps::RNSVGCircleProps(
     responsible(convertRawProp(context, rawProps, "responsible", sourceProps.responsible, {false})),
     display(convertRawProp(context, rawProps, "display", sourceProps.display, {})),
     pointerEvents(convertRawProp(context, rawProps, "pointerEvents", sourceProps.pointerEvents, {})),
+    color(convertRawProp(context, rawProps, "color", sourceProps.color, {})),
     fill(convertRawProp(context, rawProps, "fill", sourceProps.fill, {})),
     fillOpacity(convertRawProp(context, rawProps, "fillOpacity", sourceProps.fillOpacity, {1.0})),
     fillRule(convertRawProp(context, rawProps, "fillRule", sourceProps.fillRule, {1})),
@@ -123,6 +123,7 @@ RNSVGClipPathProps::RNSVGClipPathProps(
     responsible(convertRawProp(context, rawProps, "responsible", sourceProps.responsible, {false})),
     display(convertRawProp(context, rawProps, "display", sourceProps.display, {})),
     pointerEvents(convertRawProp(context, rawProps, "pointerEvents", sourceProps.pointerEvents, {})),
+    color(convertRawProp(context, rawProps, "color", sourceProps.color, {})),
     fill(convertRawProp(context, rawProps, "fill", sourceProps.fill, {})),
     fillOpacity(convertRawProp(context, rawProps, "fillOpacity", sourceProps.fillOpacity, {1.0})),
     fillRule(convertRawProp(context, rawProps, "fillRule", sourceProps.fillRule, {1})),
@@ -176,6 +177,7 @@ RNSVGEllipseProps::RNSVGEllipseProps(
     responsible(convertRawProp(context, rawProps, "responsible", sourceProps.responsible, {false})),
     display(convertRawProp(context, rawProps, "display", sourceProps.display, {})),
     pointerEvents(convertRawProp(context, rawProps, "pointerEvents", sourceProps.pointerEvents, {})),
+    color(convertRawProp(context, rawProps, "color", sourceProps.color, {})),
     fill(convertRawProp(context, rawProps, "fill", sourceProps.fill, {})),
     fillOpacity(convertRawProp(context, rawProps, "fillOpacity", sourceProps.fillOpacity, {1.0})),
     fillRule(convertRawProp(context, rawProps, "fillRule", sourceProps.fillRule, {1})),
@@ -195,6 +197,20 @@ RNSVGEllipseProps::RNSVGEllipseProps(
     rx(convertRawProp(context, rawProps, "rx", sourceProps.rx, {})),
     ry(convertRawProp(context, rawProps, "ry", sourceProps.ry, {}))
       {}
+RNSVGFeBlendProps::RNSVGFeBlendProps(
+    const PropsParserContext &context,
+    const RNSVGFeBlendProps &sourceProps,
+    const RawProps &rawProps): ViewProps(context, sourceProps, rawProps),
+
+    x(convertRawProp(context, rawProps, "x", sourceProps.x, {})),
+    y(convertRawProp(context, rawProps, "y", sourceProps.y, {})),
+    width(convertRawProp(context, rawProps, "width", sourceProps.width, {})),
+    height(convertRawProp(context, rawProps, "height", sourceProps.height, {})),
+    result(convertRawProp(context, rawProps, "result", sourceProps.result, {})),
+    in1(convertRawProp(context, rawProps, "in1", sourceProps.in1, {})),
+    in2(convertRawProp(context, rawProps, "in2", sourceProps.in2, {})),
+    mode(convertRawProp(context, rawProps, "mode", sourceProps.mode, {RNSVGFeBlendMode::Normal}))
+      {}
 RNSVGFeColorMatrixProps::RNSVGFeColorMatrixProps(
     const PropsParserContext &context,
     const RNSVGFeColorMatrixProps &sourceProps,
@@ -208,6 +224,60 @@ RNSVGFeColorMatrixProps::RNSVGFeColorMatrixProps(
     in1(convertRawProp(context, rawProps, "in1", sourceProps.in1, {})),
     type(convertRawProp(context, rawProps, "type", sourceProps.type, {RNSVGFeColorMatrixType::Matrix})),
     values(convertRawProp(context, rawProps, "values", sourceProps.values, {}))
+      {}
+RNSVGFeFloodProps::RNSVGFeFloodProps(
+    const PropsParserContext &context,
+    const RNSVGFeFloodProps &sourceProps,
+    const RawProps &rawProps): ViewProps(context, sourceProps, rawProps),
+
+    x(convertRawProp(context, rawProps, "x", sourceProps.x, {})),
+    y(convertRawProp(context, rawProps, "y", sourceProps.y, {})),
+    width(convertRawProp(context, rawProps, "width", sourceProps.width, {})),
+    height(convertRawProp(context, rawProps, "height", sourceProps.height, {})),
+    result(convertRawProp(context, rawProps, "result", sourceProps.result, {})),
+    floodColor(convertRawProp(context, rawProps, "floodColor", sourceProps.floodColor, {})),
+    floodOpacity(convertRawProp(context, rawProps, "floodOpacity", sourceProps.floodOpacity, {1.0}))
+      {}
+RNSVGFeGaussianBlurProps::RNSVGFeGaussianBlurProps(
+    const PropsParserContext &context,
+    const RNSVGFeGaussianBlurProps &sourceProps,
+    const RawProps &rawProps): ViewProps(context, sourceProps, rawProps),
+
+    x(convertRawProp(context, rawProps, "x", sourceProps.x, {})),
+    y(convertRawProp(context, rawProps, "y", sourceProps.y, {})),
+    width(convertRawProp(context, rawProps, "width", sourceProps.width, {})),
+    height(convertRawProp(context, rawProps, "height", sourceProps.height, {})),
+    result(convertRawProp(context, rawProps, "result", sourceProps.result, {})),
+    in1(convertRawProp(context, rawProps, "in1", sourceProps.in1, {})),
+    stdDeviationX(convertRawProp(context, rawProps, "stdDeviationX", sourceProps.stdDeviationX, {0.0})),
+    stdDeviationY(convertRawProp(context, rawProps, "stdDeviationY", sourceProps.stdDeviationY, {0.0})),
+    edgeMode(convertRawProp(context, rawProps, "edgeMode", sourceProps.edgeMode, {RNSVGFeGaussianBlurEdgeMode::None}))
+      {}
+RNSVGFeMergeProps::RNSVGFeMergeProps(
+    const PropsParserContext &context,
+    const RNSVGFeMergeProps &sourceProps,
+    const RawProps &rawProps): ViewProps(context, sourceProps, rawProps),
+
+    x(convertRawProp(context, rawProps, "x", sourceProps.x, {})),
+    y(convertRawProp(context, rawProps, "y", sourceProps.y, {})),
+    width(convertRawProp(context, rawProps, "width", sourceProps.width, {})),
+    height(convertRawProp(context, rawProps, "height", sourceProps.height, {})),
+    result(convertRawProp(context, rawProps, "result", sourceProps.result, {})),
+    nodes(convertRawProp(context, rawProps, "nodes", sourceProps.nodes, {}))
+      {}
+RNSVGFeOffsetProps::RNSVGFeOffsetProps(
+    const PropsParserContext &context,
+    const RNSVGFeOffsetProps &sourceProps,
+    const RawProps &rawProps): ViewProps(context, sourceProps, rawProps),
+
+    x(convertRawProp(context, rawProps, "x", sourceProps.x, {})),
+    y(convertRawProp(context, rawProps, "y", sourceProps.y, {})),
+    width(convertRawProp(context, rawProps, "width", sourceProps.width, {})),
+    height(convertRawProp(context, rawProps, "height", sourceProps.height, {})),
+    result(convertRawProp(context, rawProps, "result", sourceProps.result, {})),
+    in1(convertRawProp(context, rawProps, "in1", sourceProps.in1, {})),
+    dx(convertRawProp(context, rawProps, "dx", sourceProps.dx, {})),
+    dy(convertRawProp(context, rawProps, "dy", sourceProps.dy, {}))
       {}
 RNSVGFilterProps::RNSVGFilterProps(
     const PropsParserContext &context,
@@ -239,6 +309,7 @@ RNSVGForeignObjectProps::RNSVGForeignObjectProps(
     responsible(convertRawProp(context, rawProps, "responsible", sourceProps.responsible, {false})),
     display(convertRawProp(context, rawProps, "display", sourceProps.display, {})),
     pointerEvents(convertRawProp(context, rawProps, "pointerEvents", sourceProps.pointerEvents, {})),
+    color(convertRawProp(context, rawProps, "color", sourceProps.color, {})),
     fill(convertRawProp(context, rawProps, "fill", sourceProps.fill, {})),
     fillOpacity(convertRawProp(context, rawProps, "fillOpacity", sourceProps.fillOpacity, {1.0})),
     fillRule(convertRawProp(context, rawProps, "fillRule", sourceProps.fillRule, {1})),
@@ -278,6 +349,7 @@ RNSVGGroupProps::RNSVGGroupProps(
     responsible(convertRawProp(context, rawProps, "responsible", sourceProps.responsible, {false})),
     display(convertRawProp(context, rawProps, "display", sourceProps.display, {})),
     pointerEvents(convertRawProp(context, rawProps, "pointerEvents", sourceProps.pointerEvents, {})),
+    color(convertRawProp(context, rawProps, "color", sourceProps.color, {})),
     fill(convertRawProp(context, rawProps, "fill", sourceProps.fill, {})),
     fillOpacity(convertRawProp(context, rawProps, "fillOpacity", sourceProps.fillOpacity, {1.0})),
     fillRule(convertRawProp(context, rawProps, "fillRule", sourceProps.fillRule, {1})),
@@ -313,6 +385,7 @@ RNSVGImageProps::RNSVGImageProps(
     responsible(convertRawProp(context, rawProps, "responsible", sourceProps.responsible, {false})),
     display(convertRawProp(context, rawProps, "display", sourceProps.display, {})),
     pointerEvents(convertRawProp(context, rawProps, "pointerEvents", sourceProps.pointerEvents, {})),
+    color(convertRawProp(context, rawProps, "color", sourceProps.color, {})),
     fill(convertRawProp(context, rawProps, "fill", sourceProps.fill, {})),
     fillOpacity(convertRawProp(context, rawProps, "fillOpacity", sourceProps.fillOpacity, {1.0})),
     fillRule(convertRawProp(context, rawProps, "fillRule", sourceProps.fillRule, {1})),
@@ -348,9 +421,9 @@ RNSVGSvgViewProps::RNSVGSvgViewProps(
     vbHeight(convertRawProp(context, rawProps, "vbHeight", sourceProps.vbHeight, {0.0})),
     align(convertRawProp(context, rawProps, "align", sourceProps.align, {})),
     meetOrSlice(convertRawProp(context, rawProps, "meetOrSlice", sourceProps.meetOrSlice, {0})),
-    tintColor(convertRawProp(context, rawProps, "tintColor", sourceProps.tintColor, {})),
     color(convertRawProp(context, rawProps, "color", sourceProps.color, {})),
-    pointerEvents(convertRawProp(context, rawProps, "pointerEvents", sourceProps.pointerEvents, {}))
+    pointerEvents(convertRawProp(context, rawProps, "pointerEvents", sourceProps.pointerEvents, {})),
+    hitSlop(convertRawProp(context, rawProps, "hitSlop", sourceProps.hitSlop, {}))
       {}
 RNSVGLinearGradientProps::RNSVGLinearGradientProps(
     const PropsParserContext &context,
@@ -394,6 +467,7 @@ RNSVGLineProps::RNSVGLineProps(
     responsible(convertRawProp(context, rawProps, "responsible", sourceProps.responsible, {false})),
     display(convertRawProp(context, rawProps, "display", sourceProps.display, {})),
     pointerEvents(convertRawProp(context, rawProps, "pointerEvents", sourceProps.pointerEvents, {})),
+    color(convertRawProp(context, rawProps, "color", sourceProps.color, {})),
     fill(convertRawProp(context, rawProps, "fill", sourceProps.fill, {})),
     fillOpacity(convertRawProp(context, rawProps, "fillOpacity", sourceProps.fillOpacity, {1.0})),
     fillRule(convertRawProp(context, rawProps, "fillRule", sourceProps.fillRule, {1})),
@@ -430,6 +504,7 @@ RNSVGMarkerProps::RNSVGMarkerProps(
     responsible(convertRawProp(context, rawProps, "responsible", sourceProps.responsible, {false})),
     display(convertRawProp(context, rawProps, "display", sourceProps.display, {})),
     pointerEvents(convertRawProp(context, rawProps, "pointerEvents", sourceProps.pointerEvents, {})),
+    color(convertRawProp(context, rawProps, "color", sourceProps.color, {})),
     fill(convertRawProp(context, rawProps, "fill", sourceProps.fill, {})),
     fillOpacity(convertRawProp(context, rawProps, "fillOpacity", sourceProps.fillOpacity, {1.0})),
     fillRule(convertRawProp(context, rawProps, "fillRule", sourceProps.fillRule, {1})),
@@ -477,6 +552,7 @@ RNSVGMaskProps::RNSVGMaskProps(
     responsible(convertRawProp(context, rawProps, "responsible", sourceProps.responsible, {false})),
     display(convertRawProp(context, rawProps, "display", sourceProps.display, {})),
     pointerEvents(convertRawProp(context, rawProps, "pointerEvents", sourceProps.pointerEvents, {})),
+    color(convertRawProp(context, rawProps, "color", sourceProps.color, {})),
     fill(convertRawProp(context, rawProps, "fill", sourceProps.fill, {})),
     fillOpacity(convertRawProp(context, rawProps, "fillOpacity", sourceProps.fillOpacity, {1.0})),
     fillRule(convertRawProp(context, rawProps, "fillRule", sourceProps.fillRule, {1})),
@@ -519,6 +595,7 @@ RNSVGPathProps::RNSVGPathProps(
     responsible(convertRawProp(context, rawProps, "responsible", sourceProps.responsible, {false})),
     display(convertRawProp(context, rawProps, "display", sourceProps.display, {})),
     pointerEvents(convertRawProp(context, rawProps, "pointerEvents", sourceProps.pointerEvents, {})),
+    color(convertRawProp(context, rawProps, "color", sourceProps.color, {})),
     fill(convertRawProp(context, rawProps, "fill", sourceProps.fill, {})),
     fillOpacity(convertRawProp(context, rawProps, "fillOpacity", sourceProps.fillOpacity, {1.0})),
     fillRule(convertRawProp(context, rawProps, "fillRule", sourceProps.fillRule, {1})),
@@ -552,6 +629,7 @@ RNSVGPatternProps::RNSVGPatternProps(
     responsible(convertRawProp(context, rawProps, "responsible", sourceProps.responsible, {false})),
     display(convertRawProp(context, rawProps, "display", sourceProps.display, {})),
     pointerEvents(convertRawProp(context, rawProps, "pointerEvents", sourceProps.pointerEvents, {})),
+    color(convertRawProp(context, rawProps, "color", sourceProps.color, {})),
     fill(convertRawProp(context, rawProps, "fill", sourceProps.fill, {})),
     fillOpacity(convertRawProp(context, rawProps, "fillOpacity", sourceProps.fillOpacity, {1.0})),
     fillRule(convertRawProp(context, rawProps, "fillRule", sourceProps.fillRule, {1})),
@@ -627,6 +705,7 @@ RNSVGRectProps::RNSVGRectProps(
     responsible(convertRawProp(context, rawProps, "responsible", sourceProps.responsible, {false})),
     display(convertRawProp(context, rawProps, "display", sourceProps.display, {})),
     pointerEvents(convertRawProp(context, rawProps, "pointerEvents", sourceProps.pointerEvents, {})),
+    color(convertRawProp(context, rawProps, "color", sourceProps.color, {})),
     fill(convertRawProp(context, rawProps, "fill", sourceProps.fill, {})),
     fillOpacity(convertRawProp(context, rawProps, "fillOpacity", sourceProps.fillOpacity, {1.0})),
     fillRule(convertRawProp(context, rawProps, "fillRule", sourceProps.fillRule, {1})),
@@ -665,6 +744,7 @@ RNSVGSymbolProps::RNSVGSymbolProps(
     responsible(convertRawProp(context, rawProps, "responsible", sourceProps.responsible, {false})),
     display(convertRawProp(context, rawProps, "display", sourceProps.display, {})),
     pointerEvents(convertRawProp(context, rawProps, "pointerEvents", sourceProps.pointerEvents, {})),
+    color(convertRawProp(context, rawProps, "color", sourceProps.color, {})),
     fill(convertRawProp(context, rawProps, "fill", sourceProps.fill, {})),
     fillOpacity(convertRawProp(context, rawProps, "fillOpacity", sourceProps.fillOpacity, {1.0})),
     fillRule(convertRawProp(context, rawProps, "fillRule", sourceProps.fillRule, {1})),
@@ -706,6 +786,7 @@ RNSVGTextProps::RNSVGTextProps(
     responsible(convertRawProp(context, rawProps, "responsible", sourceProps.responsible, {false})),
     display(convertRawProp(context, rawProps, "display", sourceProps.display, {})),
     pointerEvents(convertRawProp(context, rawProps, "pointerEvents", sourceProps.pointerEvents, {})),
+    color(convertRawProp(context, rawProps, "color", sourceProps.color, {})),
     fill(convertRawProp(context, rawProps, "fill", sourceProps.fill, {})),
     fillOpacity(convertRawProp(context, rawProps, "fillOpacity", sourceProps.fillOpacity, {1.0})),
     fillRule(convertRawProp(context, rawProps, "fillRule", sourceProps.fillRule, {1})),
@@ -752,6 +833,7 @@ RNSVGTextPathProps::RNSVGTextPathProps(
     responsible(convertRawProp(context, rawProps, "responsible", sourceProps.responsible, {false})),
     display(convertRawProp(context, rawProps, "display", sourceProps.display, {})),
     pointerEvents(convertRawProp(context, rawProps, "pointerEvents", sourceProps.pointerEvents, {})),
+    color(convertRawProp(context, rawProps, "color", sourceProps.color, {})),
     fill(convertRawProp(context, rawProps, "fill", sourceProps.fill, {})),
     fillOpacity(convertRawProp(context, rawProps, "fillOpacity", sourceProps.fillOpacity, {1.0})),
     fillRule(convertRawProp(context, rawProps, "fillRule", sourceProps.fillRule, {1})),
@@ -804,6 +886,7 @@ RNSVGTSpanProps::RNSVGTSpanProps(
     responsible(convertRawProp(context, rawProps, "responsible", sourceProps.responsible, {false})),
     display(convertRawProp(context, rawProps, "display", sourceProps.display, {})),
     pointerEvents(convertRawProp(context, rawProps, "pointerEvents", sourceProps.pointerEvents, {})),
+    color(convertRawProp(context, rawProps, "color", sourceProps.color, {})),
     fill(convertRawProp(context, rawProps, "fill", sourceProps.fill, {})),
     fillOpacity(convertRawProp(context, rawProps, "fillOpacity", sourceProps.fillOpacity, {1.0})),
     fillRule(convertRawProp(context, rawProps, "fillRule", sourceProps.fillRule, {1})),
@@ -851,6 +934,7 @@ RNSVGUseProps::RNSVGUseProps(
     responsible(convertRawProp(context, rawProps, "responsible", sourceProps.responsible, {false})),
     display(convertRawProp(context, rawProps, "display", sourceProps.display, {})),
     pointerEvents(convertRawProp(context, rawProps, "pointerEvents", sourceProps.pointerEvents, {})),
+    color(convertRawProp(context, rawProps, "color", sourceProps.color, {})),
     fill(convertRawProp(context, rawProps, "fill", sourceProps.fill, {})),
     fillOpacity(convertRawProp(context, rawProps, "fillOpacity", sourceProps.fillOpacity, {1.0})),
     fillRule(convertRawProp(context, rawProps, "fillRule", sourceProps.fillRule, {1})),

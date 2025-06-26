@@ -1,5 +1,5 @@
-import { ActivityIndicator, BackHandler, StyleSheet, Text, View } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, BackHandler, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import React, { useCallback, useEffect, useRef, useState, useMemo } from 'react';
 import SafeAreaCoustom from '../components/SafeAreaCoustom';
 import CoustomBtn from '../components/CoustomBtn';
 import { FontsStyle, windowHeight, windowWidth } from '../utils/fontStyle/FontsStyle';
@@ -7,30 +7,55 @@ import { images } from '../utils/imgaes';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import { baseUrl, endPoints } from '../services/api';
-import Image from 'react-native-image-progress';
-
+import PagerView from 'react-native-pager-view';
+import FastImage from 'react-native-fast-image';
 
 const WelcomeScreen = () => {
-    const navigation = useNavigation()
-    const [slider, setSlider] = useState(null)
+    const navigation = useNavigation();
+    const [slider, setSlider] = useState(null);
+    const pagerRef = useRef(null);
+
+    // Memoize slider data to avoid unnecessary re-renders
+    const memoizedSlider = useMemo(() => slider, [slider]);
+
+    const goToPage = useCallback((pageNumber) => {
+        if (pagerRef.current) {
+            pagerRef.current.setPage(pageNumber);
+        }
+    }, []);
+
+    const fetchPosters = useCallback(async () => {
+        try {
+            const res = await axios.get(`${baseUrl}${endPoints.getSliderImages}`);
+            setSlider(res.data.data);
+        } catch (error) {
+            console.error("Error fetching slider images:", error);
+        }
+    }, []);
+
     useEffect(() => {
-        getPosters()
-    }, [])
+        fetchPosters();
+    }, [fetchPosters]);
 
-    const getPosters = async () => {
-        const res = await axios.get(`${baseUrl}${endPoints.getSliderImages}`)
-        // console.log(res.data)
-        setSlider(res.data.data)
-    }
+    const onPressSlideOne = useCallback(() => {
+        goToPage(1);
+    }, [goToPage]);
 
+    const onPressSlideTwo = useCallback(() => {
+        goToPage(2);
+    }, [goToPage]);
 
-    const onPress = () => {
-        navigation.navigate('AppIntroFirst', { slider })
-    }
+    const onPressSlideThree = useCallback(() => {
+        navigation.navigate('LogIn');
+    }, [navigation]);
+
+    const SkipHandler = useCallback(() => {
+        navigation.navigate('LogIn');
+    }, [navigation]);
 
     useEffect(() => {
         const backAction = () => {
-            BackHandler.exitApp()
+            BackHandler.exitApp();
             return true;
         };
         const backHandler = BackHandler.addEventListener(
@@ -41,39 +66,75 @@ const WelcomeScreen = () => {
         return () => backHandler.remove();
     }, []);
 
-
-
+    // Memoized Skip button component
+    const SkpiBtn = useMemo(() => (
+        <TouchableOpacity
+            onPress={SkipHandler}
+            style={styles.skipBtn}>
+            <Text style={styles.skip}>{"Skip"}</Text>
+        </TouchableOpacity>
+    ), [SkipHandler]);
 
     return (
         <SafeAreaCoustom>
-            <View style={styles.mainCard}>
-                <View style={styles.imageCard}>
-                    <Image
-                        source={{ uri: slider?.slider_1[0] }}
-                        indicator={ActivityIndicator}
+            <PagerView
+                ref={pagerRef}
+                scrollEnabled={false}
+                style={styles.pagerView}
+                initialPage={0}
+            >
+                <View style={styles.Card} key="1">
+                    {SkpiBtn}
+                    <FastImage
+                        source={{ uri: memoizedSlider?.slider_1[0] }}
                         resizeMode='contain'
                         style={{ width: '100%', flex: 1 }}
                     />
-
+                    <CoustomBtn
+                        title={'Next : Notification'}
+                        paddingVertical={15}
+                        width={windowWidth * 0.9}
+                        backgroundColor={'#22C55F'}
+                        borderRadius={15}
+                        titleColor={'#FFF'}
+                        onPress={onPressSlideOne}
+                    />
                 </View>
-                <View style={styles.indeGatorCard}>
-                    <View style={[styles.roundIndegator, { width: 17 }]} />
-                    <View style={styles.roundIndegator} />
-                    <View style={styles.roundIndegator} />
+                <View style={styles.Card} key="2">
+                    {SkpiBtn}
+                    <FastImage
+                        source={{ uri: memoizedSlider?.slider_2[0] }}
+                        resizeMode='contain'
+                        style={{ width: '100%', flex: 1 }}
+                    />
+                    <CoustomBtn
+                        title={'Next : Notification'}
+                        paddingVertical={15}
+                        width={windowWidth * 0.9}
+                        backgroundColor={'#22C55F'}
+                        borderRadius={15}
+                        titleColor={'#FFF'}
+                        onPress={onPressSlideTwo}
+                    />
                 </View>
-            </View>
-            <View style={styles.btnCard}>
-                <CoustomBtn
-                    title={'Next : Notification'}
-                    paddingVertical={15}
-                    // borderWidth={1}
-                    width={windowWidth * 0.9}
-                    backgroundColor={'#22C55F'}
-                    borderRadius={15}
-                    titleColor={'#FFF'}
-                    onPress={onPress}
-                />
-            </View>
+                <View style={styles.Card} key="3">
+                    {SkpiBtn}
+                    <FastImage
+                        source={{ uri: memoizedSlider?.slider_3[0] }}
+                        resizeMode='contain'
+                        style={{ width: '100%', flex: 1 }}
+                    />
+                    <CoustomBtn
+                        title={'Start for free'}
+                        paddingVertical={15}
+                        width={windowWidth * 0.9}
+                        backgroundColor={'#22C55F'}
+                        borderRadius={15}
+                        titleColor={'#FFF'}
+                        onPress={onPressSlideThree}
+                    />
+                </View>
+            </PagerView>
         </SafeAreaCoustom>
     );
 };
@@ -81,42 +142,32 @@ const WelcomeScreen = () => {
 export default WelcomeScreen;
 
 const styles = StyleSheet.create({
-    mainCard: {
+    pagerView: {
+        flex: 1,
+        height: "100%",
+        width: '100%',
+    },
+    Card: {
         flex: 1,
         alignItems: 'center',
-        // borderWidth: 1,
-        // borderColor: 'red',
-        width: '100%',
-        justifyContent: 'flex-start'
-
+        justifyContent: 'center',
+        paddingBottom: '10%',
     },
-    detailsCard: {
-        // borderWidth: 1,
-        width: '90%',
-        marginVertical: '5%',
-        marginBottom: '8%'
+    skip: {
+        color: '#22C55F',
+        fontWeight: '700',
     },
-    indeGatorCard: {
-        // borderWidth: 1,
-        flexDirection: 'row',
-        gap: 10
+    skipBtn: {
+        shadowColor: '#22C55F',
+        shadowOffset: { width: -2, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        backgroundColor: '#FFF',
+        elevation: 10,
+        paddingHorizontal: 10,
+        padding: 5,
+        borderRadius: 20,
+        alignSelf: 'flex-end',
+        marginRight: '6%',
     },
-    roundIndegator: {
-        height: 10,
-        backgroundColor: '#454545',
-        // borderWidth: 1,
-        width: 10,
-        borderRadius: 5
-    },
-    imageCard: {
-        width: '100%',
-        // borderWidth: 1,
-        alignItems: 'center',
-        height: '80%',
-        justifyContent: 'center'
-    },
-    btnCard: {
-        position: 'absolute',
-        bottom: '5%'
-    }
 });

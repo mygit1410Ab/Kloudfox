@@ -4,12 +4,12 @@ PODS:
     - React-Core
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.74.3)
-  - Firebase/CoreOnly (10.27.0):
-    - FirebaseCore (= 10.27.0)
-  - Firebase/Messaging (10.27.0):
+  - Firebase/CoreOnly (10.29.0):
+    - FirebaseCore (= 10.29.0)
+  - Firebase/Messaging (10.29.0):
     - Firebase/CoreOnly
-    - FirebaseMessaging (~> 10.27.0)
-  - FirebaseCore (10.27.0):
+    - FirebaseMessaging (~> 10.29.0)
+  - FirebaseCore (10.29.0):
     - FirebaseCoreInternal (~> 10.0)
     - GoogleUtilities/Environment (~> 7.12)
     - GoogleUtilities/Logger (~> 7.12)
@@ -22,7 +22,7 @@ PODS:
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - PromisesObjC (~> 2.1)
-  - FirebaseMessaging (10.27.0):
+  - FirebaseMessaging (10.29.0):
     - FirebaseCore (~> 10.0)
     - FirebaseInstallations (~> 10.0)
     - GoogleDataTransport (~> 9.3)
@@ -1011,11 +1011,30 @@ PODS:
   - React-Mapbuffer (0.74.3):
     - glog
     - React-debug
+  - react-native-pager-view (6.4.1):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Codegen
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - react-native-restart (0.0.27):
     - React-Core
-  - react-native-safe-area-context (4.10.7):
-    - React-Core
-  - react-native-splash-screen (3.3.0):
+  - react-native-safe-area-context (4.14.0):
     - React-Core
   - React-nativeconfig (0.74.3)
   - React-NativeModulesApple (0.74.3):
@@ -1246,7 +1265,7 @@ PODS:
     - React-logger (= 0.74.3)
     - React-perflogger (= 0.74.3)
     - React-utils (= 0.74.3)
-  - RNCAsyncStorage (1.23.1):
+  - RNCAsyncStorage (1.24.0):
     - React-Core
   - RNCPushNotificationIOS (1.11.0):
     - React-Core
@@ -1254,15 +1273,15 @@ PODS:
     - React-Core
     - SDWebImage (~> 5.11.1)
     - SDWebImageWebPCoder (~> 0.8.4)
-  - RNFBApp (20.1.0):
-    - Firebase/CoreOnly (= 10.27.0)
+  - RNFBApp (20.5.0):
+    - Firebase/CoreOnly (= 10.29.0)
     - React-Core
-  - RNFBMessaging (20.1.0):
-    - Firebase/Messaging (= 10.27.0)
+  - RNFBMessaging (20.5.0):
+    - Firebase/Messaging (= 10.29.0)
     - FirebaseCoreExtension
     - React-Core
     - RNFBApp
-  - RNGestureHandler (2.17.1):
+  - RNGestureHandler (2.20.2):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1283,7 +1302,52 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNReanimated (3.13.0):
+  - RNReanimated (3.16.1):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Codegen
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - RNReanimated/reanimated (= 3.16.1)
+    - RNReanimated/worklets (= 3.16.1)
+    - Yoga
+  - RNReanimated/reanimated (3.16.1):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Codegen
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - RNReanimated/reanimated/apple (= 3.16.1)
+    - Yoga
+  - RNReanimated/reanimated/apple (3.16.1):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1304,7 +1368,28 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNScreens (3.32.0):
+  - RNReanimated/worklets (3.16.1):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Codegen
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
+  - RNScreens (3.35.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1326,9 +1411,9 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNSnackbar (2.6.2):
+  - RNSnackbar (2.8.0):
     - React-Core
-  - RNSVG (15.4.0):
+  - RNSVG (15.8.0):
     - React-Core
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
@@ -1373,9 +1458,9 @@ DEPENDENCIES:
   - React-jsitracing (from `../node_modules/react-native/ReactCommon/hermes/executor/`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
+  - react-native-pager-view (from `../node_modules/react-native-pager-view`)
   - react-native-restart (from `../node_modules/react-native-restart`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
-  - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - React-nativeconfig (from `../node_modules/react-native/ReactCommon`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -1492,12 +1577,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/logger"
   React-Mapbuffer:
     :path: "../node_modules/react-native/ReactCommon"
+  react-native-pager-view:
+    :path: "../node_modules/react-native-pager-view"
   react-native-restart:
     :path: "../node_modules/react-native-restart"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
-  react-native-splash-screen:
-    :path: "../node_modules/react-native-splash-screen"
   React-nativeconfig:
     :path: "../node_modules/react-native/ReactCommon"
   React-NativeModulesApple:
@@ -1572,12 +1657,12 @@ SPEC CHECKSUMS:
   BVLinearGradient: 880f91a7854faff2df62518f0281afb1c60d49a3
   DoubleConversion: 76ab83afb40bddeeee456813d9c04f67f78771b5
   FBLazyVector: 7e977dd099937dc5458851233141583abba49ff2
-  Firebase: 26b040b20866a55f55eb3611b9fcf3ae64816b86
-  FirebaseCore: a2b95ae4ce7c83ceecfbbbe3b6f1cddc7415a808
+  Firebase: cec914dab6fd7b1bd8ab56ea07ce4e03dd251c2d
+  FirebaseCore: 30e9c1cbe3d38f5f5e75f48bfcea87d7c358ec16
   FirebaseCoreExtension: 705ca5b14bf71d2564a0ddc677df1fc86ffa600f
   FirebaseCoreInternal: df84dd300b561c27d5571684f389bf60b0a5c934
   FirebaseInstallations: 913cf60d0400ebd5d6b63a28b290372ab44590dd
-  FirebaseMessaging: 585984d0a1df120617eb10b44cad8968b859815e
+  FirebaseMessaging: 7b5d8033e183ab59eb5b852a53201559e976d366
   fmt: 4c2741a687cc09f0634a2e2c72a838b99f1ff120
   glog: fdfdfe5479092de0c4bdbebedd9056951f092c4f
   GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
@@ -1610,9 +1695,9 @@ SPEC CHECKSUMS:
   React-jsitracing: 1aa5681c353b41573b03e0e480a5adf5fa1c56d8
   React-logger: fa92ba4d3a5d39ac450f59be2a3cec7b099f0304
   React-Mapbuffer: 70da5955150a58732e9336a0c7e71cd49e909f25
+  react-native-pager-view: ec794201907d9b62825bcf2a3a6ed3ff493c2ab8
   react-native-restart: 7595693413fe3ca15893702f2c8306c62a708162
-  react-native-safe-area-context: 422017db8bcabbada9ad607d010996c56713234c
-  react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
+  react-native-safe-area-context: 4532f1a0c5d34a46b9324ccaaedcb5582a302b7d
   React-nativeconfig: 84806b820491db30175afbf027e99e8415dc63f0
   React-NativeModulesApple: 7b79212f8cf496ab554e0b7b09acbd4aa4690260
   React-perflogger: 7bb9ba49435ff66b666e7966ee10082508a203e8
@@ -1636,16 +1721,16 @@ SPEC CHECKSUMS:
   React-runtimescheduler: e4ad653e1d2f5ff40ba047446cacde009694f0ed
   React-utils: 6f7ac39d9a0de447d4334bb25d144a28c0c5d8c9
   ReactCommon: 4a09c7d8a06e93c1e2e988a3b9f3db3d2449f2fc
-  RNCAsyncStorage: 826b603ae9c0f88b5ac4e956801f755109fa4d5c
+  RNCAsyncStorage: ec53e44dc3e75b44aa2a9f37618a49c3bc080a7a
   RNCPushNotificationIOS: 64218f3c776c03d7408284a819b2abfda1834bc8
   RNFastImage: 5c9c9fed9c076e521b3f509fe79e790418a544e8
-  RNFBApp: 1ae7462cddf74a49df206d3418bc0170f8fa53e5
-  RNFBMessaging: 85f661b9f16e2b081e6809ef63d3daa4458b9042
-  RNGestureHandler: 5538c370587d7e757667b9283ca867dd7635f154
-  RNReanimated: 308bcd09703f16e26367dfd0c2bba43fc296aa47
-  RNScreens: fd2722bcc59f36a629205af8cc7b48e4bc0d09f5
-  RNSnackbar: 3727b42bf6c4314a53c18185b5203e915a4ab020
-  RNSVG: cb24fb322de8c1ebf59904e7aca0447bb8dbed5a
+  RNFBApp: 5f87753a8d8b37d229adf85cd0ff37709ffdf008
+  RNFBMessaging: 3fa1114c0868dd21f20dfe186adf42297ea316b1
+  RNGestureHandler: 89fffd8ca7eb9519546b9361a229bb6186629af4
+  RNReanimated: 414b345db8bd8cf0767b9decd71c21558a26e669
+  RNScreens: 62ee76dc52f65afddfa6821b01965dc79d69c35b
+  RNSnackbar: 37ce6daf19c8bd35cf6133db5797aa298c8782ac
+  RNSVG: 8b1a777d54096b8c2a0fd38fc9d5a454332bbb4d
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: 908b83b6adda48effe7667cd2b7f78c897e5111d
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d

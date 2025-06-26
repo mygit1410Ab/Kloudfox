@@ -32,6 +32,7 @@
 #import "RCTSurfaceTouchHandler+RNSUtility.h"
 #import "RCTTouchHandler+RNSUtility.h"
 #import "RNSUIBarButtonItem.h"
+#import "UIView+RNSUtility.h"
 
 FOUNDATION_EXPORT double RNScreensVersionNumber;
 FOUNDATION_EXPORT const unsigned char RNScreensVersionString[];

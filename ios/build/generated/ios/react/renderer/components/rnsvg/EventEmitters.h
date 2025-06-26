@@ -48,7 +48,42 @@ class RNSVGEllipseEventEmitter : public ViewEventEmitter {
   
   
 };
+class RNSVGFeBlendEventEmitter : public ViewEventEmitter {
+ public:
+  using ViewEventEmitter::ViewEventEmitter;
+
+  
+  
+};
 class RNSVGFeColorMatrixEventEmitter : public ViewEventEmitter {
+ public:
+  using ViewEventEmitter::ViewEventEmitter;
+
+  
+  
+};
+class RNSVGFeFloodEventEmitter : public ViewEventEmitter {
+ public:
+  using ViewEventEmitter::ViewEventEmitter;
+
+  
+  
+};
+class RNSVGFeGaussianBlurEventEmitter : public ViewEventEmitter {
+ public:
+  using ViewEventEmitter::ViewEventEmitter;
+
+  
+  
+};
+class RNSVGFeMergeEventEmitter : public ViewEventEmitter {
+ public:
+  using ViewEventEmitter::ViewEventEmitter;
+
+  
+  
+};
+class RNSVGFeOffsetEventEmitter : public ViewEventEmitter {
  public:
   using ViewEventEmitter::ViewEventEmitter;
 

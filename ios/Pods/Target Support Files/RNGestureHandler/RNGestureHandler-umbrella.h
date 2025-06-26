@@ -34,8 +34,10 @@
 #import "RNGestureHandlerRegistry.h"
 #import "RNGestureHandlerState.h"
 #import "RNGestureHandlerStateManager.h"
+#import "RNGHStylusData.h"
 #import "RNGHTouchEventType.h"
 #import "RNGHUIKit.h"
+#import "RNGHVector.h"
 #import "RNManualActivationRecognizer.h"
 #import "RNRootViewGestureRecognizer.h"
 

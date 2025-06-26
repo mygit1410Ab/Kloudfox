@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { Platform } from 'react-native';
-import messaging from '@react-native-firebase/messaging';
-import PushNotificationIOS from '@react-native-community/push-notification-ios';
-import PushNotification from 'react-native-push-notification';
+import React, { useEffect } from "react";
+import { Platform } from "react-native";
+import messaging from "@react-native-firebase/messaging";
+import PushNotificationIOS from "@react-native-community/push-notification-ios";
+import PushNotification from "react-native-push-notification";
 
 const ForGroundHandler = () => {
   useEffect(() => {
@@ -20,7 +20,7 @@ const ForGroundHandler = () => {
 
     // Notification handling for Android
     const androidNotificationHandler = async (remoteMessage) => {
-      // console.log('Foreground notification received (Android):', remoteMessage);
+      console.log("Foreground notification received (Android):", remoteMessage);
 
       PushNotification.localNotification({
         channelId: "default-channel-id",
@@ -32,7 +32,7 @@ const ForGroundHandler = () => {
         message: remoteMessage.notification.body,
         bigLargeIcon: "ic_launcher", // Large icon for the notification (ensure you have this icon in your drawable resources)
         largeIconUrl: remoteMessage.notification.android.imageUrl, // Large icon URL
-        importance: 'high',
+        importance: "high",
         priority: "high",
         visibility: "public",
         style: {
@@ -40,14 +40,14 @@ const ForGroundHandler = () => {
             imageUrl: remoteMessage.notification.android.imageUrl,
             title: remoteMessage.notification.title,
             summaryText: remoteMessage.notification.body,
-          }
-        }
+          },
+        },
       });
     };
 
     // Notification handling for iOS
     const iosNotificationHandler = async (message) => {
-      // console.log('Foreground notification received (iOS):', message);
+      console.log("Foreground notification received (iOS):", message);
 
       PushNotificationIOS.addNotificationRequest({
         id: message.messageId,
@@ -59,9 +59,9 @@ const ForGroundHandler = () => {
 
     // Subscribe to messages
     const unsubscribe = messaging().onMessage(async (remoteMessage) => {
-      if (Platform.OS === 'android') {
+      if (Platform.OS === "android") {
         androidNotificationHandler(remoteMessage);
-      } else if (Platform.OS === 'ios') {
+      } else if (Platform.OS === "ios") {
         iosNotificationHandler(remoteMessage);
       }
     });
