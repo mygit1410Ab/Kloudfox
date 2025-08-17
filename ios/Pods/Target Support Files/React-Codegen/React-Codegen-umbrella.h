@@ -53,6 +53,8 @@
 #import "rnreanimatedJSI.h"
 #import "rnscreens/rnscreens.h"
 #import "rnscreensJSI.h"
+#import "RNSimpleToastSpec/RNSimpleToastSpec.h"
+#import "RNSimpleToastSpecJSI.h"
 #import "rnsvg/rnsvg.h"
 #import "rnsvgJSI.h"
 #import "safeareacontext/safeareacontext.h"

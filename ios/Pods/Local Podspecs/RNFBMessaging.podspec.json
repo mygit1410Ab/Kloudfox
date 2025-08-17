@@ -17,18 +17,12 @@
   },
   "source_files": "ios/**/*.{h,m}",
   "dependencies": {
-    "React-Core": [
-
-    ],
-    "RNFBApp": [
-
-    ],
+    "React-Core": [],
+    "RNFBApp": [],
     "Firebase/Messaging": [
       "10.29.0"
     ],
-    "FirebaseCoreExtension": [
-
-    ]
+    "FirebaseCoreExtension": []
   },
   "static_framework": false
 }

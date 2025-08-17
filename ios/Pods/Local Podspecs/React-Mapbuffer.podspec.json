@@ -24,11 +24,7 @@
   "header_mappings_dir": "./",
   "module_name": "React_Mapbuffer",
   "dependencies": {
-    "glog": [
-
-    ],
-    "React-debug": [
-
-    ]
+    "glog": [],
+    "React-debug": []
   }
 }

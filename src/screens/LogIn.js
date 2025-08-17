@@ -87,7 +87,6 @@ const LogIn = () => {
     setEmailError(false);
     setPasswordError(false);
 
-    // 🔍 Input validation
     if (!email.trim()) {
       setEmailError(true);
       Alert.alert("Validation", "Email is required");
@@ -106,18 +105,17 @@ const LogIn = () => {
 
       dispatch(
         loginAction(payload, async (response) => {
-          const tokenData = response?.data;
+          // ✅ Normalize response
+          const tokenData = response?.data?.access
+            ? response.data
+            : response;
 
           if (tokenData?.access && tokenData?.refresh) {
-            // ✅ Save tokens to Redux
-            dispatch(
-              setTokens({
-                access: tokenData.access,
-                refresh: tokenData.refresh,
-              })
-            );
+            dispatch(setTokens({
+              access: tokenData.access,
+              refresh: tokenData.refresh,
+            }));
 
-            // ✅ Save to AsyncStorage
             await AsyncStorage.multiSet([
               ["email", email],
               ["password", password],
@@ -125,7 +123,6 @@ const LogIn = () => {
               ["refresh", tokenData.refresh],
             ]);
 
-            // ✅ FCM Token
             const fcm = await getFcmToken();
             if (fcm) {
               await sendFcmtoken({
@@ -135,20 +132,14 @@ const LogIn = () => {
               });
             }
 
-            dispatch(loginUser()); // Optional login success flag
+            dispatch(loginUser());
 
-            // ✅ Fetch user details
             dispatch(
               getUserAction(tokenData.access, async (userResponse) => {
                 const user = userResponse?.data?.user;
-
                 if (user) {
                   dispatch(setUserData(user));
                   await AsyncStorage.setItem("userData", JSON.stringify(user));
-                  // 👇 navigate to main app if needed
-                  // navigation.replace('Home');
-                } else {
-                  console.warn("User data not received.");
                 }
               })
             );
@@ -164,6 +155,7 @@ const LogIn = () => {
       setLoading(false);
     }
   };
+
 
   const showHandler = () => {
     setShow(!show);

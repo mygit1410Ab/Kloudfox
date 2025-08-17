@@ -1,7 +1,7 @@
 import * as TYPES from "./types";
 
 export const loginAction = (payload, callBack) => ({
-  type: TYPES["LOGIN_ACTION"],
+  type: TYPES.LOGIN_ACTION,
   payload,
   callBack,
 });

@@ -31,6 +31,7 @@
 #import "UIWindow+RNScreens.h"
 #import "RCTSurfaceTouchHandler+RNSUtility.h"
 #import "RCTTouchHandler+RNSUtility.h"
+#import "RNSDefines.h"
 #import "RNSUIBarButtonItem.h"
 #import "UIView+RNSUtility.h"
 

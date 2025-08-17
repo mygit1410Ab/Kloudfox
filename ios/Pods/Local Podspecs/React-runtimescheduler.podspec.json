@@ -23,38 +23,18 @@
   "module_name": "React_runtimescheduler",
   "header_mappings_dir": "../../..",
   "dependencies": {
-    "React-runtimeexecutor": [
-
-    ],
-    "React-callinvoker": [
-
-    ],
-    "React-cxxreact": [
-
-    ],
-    "React-rendererdebug": [
-
-    ],
-    "React-utils": [
-
-    ],
-    "React-featureflags": [
-
-    ],
-    "glog": [
-
-    ],
+    "React-runtimeexecutor": [],
+    "React-callinvoker": [],
+    "React-cxxreact": [],
+    "React-rendererdebug": [],
+    "React-utils": [],
+    "React-featureflags": [],
+    "glog": [],
     "RCT-Folly": [
       "2024.01.01.00"
     ],
-    "React-jsi": [
-
-    ],
-    "React-debug": [
-
-    ],
-    "hermes-engine": [
-
-    ]
+    "React-jsi": [],
+    "React-debug": [],
+    "hermes-engine": []
   }
 }

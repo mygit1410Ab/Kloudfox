@@ -3,25 +3,31 @@ import { GET_USER, LOGIN_ACTION } from "../action/types";
 import axios from "../../utils/axiosConfig";
 import { BASE_URL, END_POINTS } from "../../utils/config";
 
-function* login(payload) {
-  console.log(payload);
-  return yield axios.post(`${BASE_URL}${END_POINTS.LOGIN}`, payload, {
+const loginApi = (payload) => {
+  return axios.post(`${BASE_URL}${END_POINTS.LOGIN}`, payload, {
     headers: {
       "Content-Type": "application/json",
     },
   });
-}
+};
 
 export function* loginSaga(action) {
   try {
     console.log("action", action);
-    const response = yield call(login, action.payload);
-    console.log("i am here ====>");
-    action.callBack(response);
+
+    const response = yield call(loginApi, action.payload);
+
     console.log("response=======>>>>>>>+++++", response.data);
+
+    if (action.callBack) {
+      action.callBack({ success: true, data: response.data });
+    }
   } catch (error) {
     console.error("Login failed:", error);
-    action.callBack(error);
+
+    if (action.callBack) {
+      action.callBack({ success: false, error });
+    }
   }
 }
 
